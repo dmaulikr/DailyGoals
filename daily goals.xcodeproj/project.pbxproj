@@ -303,6 +303,7 @@
 				5FDA427116CD3633007DA0B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
