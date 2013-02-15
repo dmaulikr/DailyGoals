@@ -10,20 +10,16 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
     NSMutableDictionary *myDictionary;
+    NSMutableDictionary *dateSpecObject;
+    NSMutableDictionary *textObject;
+    NSString *myDate;
 }
 
-@property (assign) IBOutlet NSWindow *window;
-
-- (IBAction)check1:(NSButton *)sender;
-- (IBAction)check2:(NSButton *)sender;
-- (IBAction)check3:(NSButton *)sender;
-
-@property (weak) IBOutlet NSTextField *text1;
-@property (weak) IBOutlet NSTextField *text2;
-@property (weak) IBOutlet NSTextField *text3;
-
-- (IBAction)text1action:(NSTextField *)sender;
-- (IBAction)text2action:(NSTextField *)sender;
-- (IBAction)text3action:(NSTextField *)sender;
+- (IBAction)triggerCheckBox:(NSButton *)sender;
+- (IBAction)textEvent:(NSTextField *)sender;
+@property (strong) IBOutlet NSTextField *text3;
+@property (strong) IBOutlet NSTextField *text2;
+@property (strong) IBOutlet NSTextField *text1;
 
 @end
+
