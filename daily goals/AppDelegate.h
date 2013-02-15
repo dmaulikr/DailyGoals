@@ -12,11 +12,13 @@
     NSMutableDictionary *myDictionary;
     NSMutableDictionary *dateSpecObject;
     NSMutableDictionary *textObject;
-    NSString *myDate;
+    NSString *curDate;
 }
+@property (weak) IBOutlet NSTextField *dateLabel;
 
 - (IBAction)triggerCheckBox:(NSButton *)sender;
 - (IBAction)textEvent:(NSTextField *)sender;
+
 @property (strong) IBOutlet NSTextField *text3;
 @property (strong) IBOutlet NSTextField *text2;
 @property (strong) IBOutlet NSTextField *text1;
