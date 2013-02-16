@@ -12,7 +12,8 @@
     NSMutableDictionary *myDictionary;
     NSMutableDictionary *dateSpecObject;
     NSMutableDictionary *textObject;
-    NSString *curDate;
+    NSString *myDate;
+    NSDate *NsDateTracker;
 }
 @property (weak) IBOutlet NSTextField *dateLabel;
 
@@ -22,6 +23,8 @@
 @property (strong) IBOutlet NSTextField *text3;
 @property (strong) IBOutlet NSTextField *text2;
 @property (strong) IBOutlet NSTextField *text1;
+- (IBAction)nextDate:(NSButton *)sender;
+- (IBAction)prevDate:(NSButton *)sender;
 
 @end
 
