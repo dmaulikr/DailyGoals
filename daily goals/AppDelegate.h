@@ -26,5 +26,9 @@
 - (IBAction)nextDate:(NSButton *)sender;
 - (IBAction)prevDate:(NSButton *)sender;
 
+@property (weak) IBOutlet NSButton *check1;
+@property (weak) IBOutlet NSButton *check2;
+@property (weak) IBOutlet NSButton *check3;
+
 @end
 
