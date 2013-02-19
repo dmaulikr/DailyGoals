@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CBE805416D2E62400AF7364 /* yellow_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBE805316D2E62400AF7364 /* yellow_bg.png */; };
+		4CBE805716D2F31500AF7364 /* nextarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBE805616D2F31500AF7364 /* nextarrow.png */; };
 		5FDA425616CD3632007DA0B8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FDA425516CD3632007DA0B8 /* Cocoa.framework */; };
 		5FDA426016CD3632007DA0B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5FDA425E16CD3632007DA0B8 /* InfoPlist.strings */; };
 		5FDA426216CD3632007DA0B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FDA426116CD3632007DA0B8 /* main.m */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CBE805316D2E62400AF7364 /* yellow_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = yellow_bg.png; path = "daily goals/yellow_bg.png"; sourceTree = "<group>"; };
+		4CBE805616D2F31500AF7364 /* nextarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nextarrow.png; path = "daily goals/nextarrow.png"; sourceTree = "<group>"; };
 		5FDA425216CD3632007DA0B8 /* daily goals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "daily goals.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FDA425516CD3632007DA0B8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5FDA425816CD3632007DA0B8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -46,6 +50,8 @@
 		5FDA424916CD3632007DA0B8 = {
 			isa = PBXGroup;
 			children = (
+				4CBE805616D2F31500AF7364 /* nextarrow.png */,
+				4CBE805316D2E62400AF7364 /* yellow_bg.png */,
 				5FDA425B16CD3632007DA0B8 /* daily goals */,
 				5FDA425416CD3632007DA0B8 /* Frameworks */,
 				5FDA425316CD3632007DA0B8 /* Products */,
@@ -156,6 +162,8 @@
 				5FDA426016CD3632007DA0B8 /* InfoPlist.strings in Resources */,
 				5FDA426616CD3632007DA0B8 /* Credits.rtf in Resources */,
 				5FDA426C16CD3633007DA0B8 /* MainMenu.xib in Resources */,
+				4CBE805416D2E62400AF7364 /* yellow_bg.png in Resources */,
+				4CBE805716D2F31500AF7364 /* nextarrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

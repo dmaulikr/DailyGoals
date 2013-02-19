@@ -5,16 +5,8 @@
 //  Created by Kosturko, Jessica on 2/14/13.
 //  Copyright (c) 2013 Kosturko, Jessica. All rights reserved.
 //
-
 /*
- Todo:
- Play with fonts
- Mess with Contraints
- Save random data at bottom
- Cross out Task
- rewards/ Success
- 
- */
+ Todo: Play with fonts,  Mess with Contraints, Cross out Task, rewards/ Success, animations, drop shadows */
 
 #define _Checked [NSColor grayColor]
 #define _UnChecked [NSColor blackColor]
@@ -29,8 +21,6 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     myDictionary = [[NSMutableDictionary alloc] init];
-    dateSpecObject = [[NSMutableDictionary alloc] init];
-    
     [self setCurrentDate];
     [self updateUIdate];
     [self updateDataObjectWithSavedData];
@@ -38,7 +28,6 @@
 }
 
 - (IBAction)triggerCheckBox:(NSButton *)sender {
-    //[self updateDataObjectwithNewInfoNoParams];
     [self saveAllDataAtOnce];
     [self markDoneUndone:sender assocTextField:[[[[sender superview] superview] superview] viewWithTag:_TAG_FOR_TEXTFIELD]];
 }
@@ -54,27 +43,11 @@
     textfield.textColor = (checkMark.state == 1)? _Checked:_UnChecked;
 }
 
-#pragma Controller: From Data Object To View Function to update UI)
-- (void)updateUIwithSavedData {
-    if ([myDictionary valueForKey:myDate]) {
-        for (NSString* key in [myDictionary valueForKey:myDate]) {
-            if ([key isEqual: @"text1"]) 
-                [self updateUIwithDataObjectData:_text1 checkBox:_check1 key:key];
-             else if ([key isEqual: @"text2"]) 
-                [self updateUIwithDataObjectData:_text2 checkBox:_check2 key:key];
-             else if ([key isEqual: @"text3"]) 
-                [self updateUIwithDataObjectData:_text3 checkBox:_check3 key:key];
-        }
-    } else {
-        _text1.stringValue = @"", _text2.stringValue = @"", _text3.stringValue = @"";
-    }
-}
-
 #pragma View: DataObject to UI
 -(void)updateUIwithDataObjectData:(NSTextField *)textfield checkBox:(NSButton *)checkbox  key:(NSString *)key{
     textfield.stringValue = [[[myDictionary valueForKey:myDate] valueForKey:key] valueForKey:@"value"];
-    [[[[[textfield superview] superview] superview] viewWithTag:20] setState:(BOOL)[[[myDictionary valueForKey:myDate] valueForKey:key] valueForKey:@"isChecked"]];
-    [self markDoneUndone:[[[[textfield superview] superview] superview] viewWithTag:20] assocTextField:textfield];
+    [[[[[textfield superview] superview] superview] viewWithTag:_TAG_FOR_CHECKBOX] setState:(BOOL)[[[myDictionary valueForKey:myDate] valueForKey:key] valueForKey:@"isChecked"]];
+    [self markDoneUndone:[[[[textfield superview] superview] superview] viewWithTag:_TAG_FOR_CHECKBOX] assocTextField:textfield];
 }
 
 #pragma View: Update UI to have new date
@@ -86,9 +59,10 @@
 - (void)setCurrentDate {
     NsDateTracker = [NSDate date];
     myDate = [self formatDateforDataObject:NsDateTracker];
+    dateSpecObject = [[NSMutableDictionary alloc] init];
 }
 
-#pragma Controller: Set myDate to user initiated Date
+#pragma Controller: Set myDate to User Initiated Date
 - (void)setDate:(NSString *)direction {
     
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
@@ -102,7 +76,6 @@
 
 #pragma Controller: Date Formater - UI Date
 -(NSString *)formatDateforUI:(NSDate *)unformattedNSDate {
-    
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
     [format setDateFormat:@"MMM dd, yyyy"];
     NSString *dateStr = [format stringFromDate:unformattedNSDate];
@@ -138,16 +111,68 @@
     [textObject setValue:sender.stringValue forKey:@"value"];
     [textObject setValue:checkedBool forKey:@"isChecked"];
     [dateSpecObject setObject:textObject forKey:textFieldInc];
+    [myDictionary setValue:_extraBox.stringValue forKey:@"extra"];
     [myDictionary setObject:dateSpecObject forKey:myDate];
     
     //Controller pass info to Model to store and retrieve data
     [self saveDatatoFile:myDictionary];
 }
 
+#pragma Controller: From Data Object To View Function to update UI)
+- (void)updateUIwithSavedData {
+    if ([myDictionary valueForKey:myDate]) {
+        for (NSString* key in [myDictionary valueForKey:myDate]) {
+            if ([key isEqual: @"text1"])
+                [self updateUIwithDataObjectData:_text1 checkBox:_check1 key:key];
+            else if ([key isEqual: @"text2"])
+                [self updateUIwithDataObjectData:_text2 checkBox:_check2 key:key];
+            else if ([key isEqual: @"text3"])
+                [self updateUIwithDataObjectData:_text3 checkBox:_check3 key:key];
+        }
+    } else {
+        _text1.stringValue = @"", _text2.stringValue = @"", _text3.stringValue = @"";
+    }
+    
+    //Extra comments box at the bototm
+    if ([myDictionary valueForKey:@"extra"]) 
+        _extraBox.stringValue = [myDictionary valueForKey:@"extra"];
+}
+
+#pragma Controller: Save all Data
 -(void)saveAllDataAtOnce {
     [self updateDataObjectwithNewInfo:_text1 boxNumber:@"text1" isChecked:[NSNumber numberWithBool:_check1.state]];
     [self updateDataObjectwithNewInfo:_text2 boxNumber:@"text2" isChecked:[NSNumber numberWithBool:_check2.state]];
     [self updateDataObjectwithNewInfo:_text3 boxNumber:@"text3" isChecked:[NSNumber numberWithBool:_check3.state]];
+}
+
+#pragma Controller: Next Date
+- (IBAction)nextDate:(NSButton *)sender {
+    [self saveAllDataAtOnce];
+    [self setDate:@"forward"];
+    [self updateUIdate];
+    [self updateUIwithSavedData];
+}
+
+#pragma Controller: Previous Date
+- (IBAction)prevDate:(NSButton *)sender {
+    [self saveAllDataAtOnce];
+    [self setDate:@"backward"];
+    [self updateUIdate];
+    [self updateUIwithSavedData];
+}
+
+- (IBAction)segCell:(NSSegmentedCell *)sender {
+    [self saveAllDataAtOnce];
+
+    if (sender.selectedSegment == 2)
+        [self setDate:@"forward"];
+    else if (sender.selectedSegment == 1)
+        [self setCurrentDate];
+    else if (sender.selectedSegment == 0)
+        [self setDate:@"backward"];
+    
+    [self updateUIdate];
+    [self updateUIwithSavedData];
 }
 
 #pragma Model: Get Data from File (If it exists)
@@ -166,17 +191,5 @@
     [dictionaryToSave writeToFile:filePath atomically:YES];
 }
 
-- (IBAction)nextDate:(NSButton *)sender {
-    [self saveAllDataAtOnce];
-    [self setDate:@"forward"];
-    [self updateUIdate];
-    [self updateUIwithSavedData];
-}
 
-- (IBAction)prevDate:(NSButton *)sender {
-    [self saveAllDataAtOnce];
-    [self setDate:@"backward"];
-    [self updateUIdate];
-    [self updateUIwithSavedData];
-}
 @end

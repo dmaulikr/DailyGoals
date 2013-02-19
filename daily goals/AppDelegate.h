@@ -25,10 +25,11 @@
 @property (strong) IBOutlet NSTextField *text1;
 - (IBAction)nextDate:(NSButton *)sender;
 - (IBAction)prevDate:(NSButton *)sender;
+- (IBAction)segCell:(NSSegmentedCell *)sender;
 
 @property (weak) IBOutlet NSButton *check1;
 @property (weak) IBOutlet NSButton *check2;
 @property (weak) IBOutlet NSButton *check3;
-
+@property (weak) IBOutlet NSTextField *extraBox;
 @end
 
