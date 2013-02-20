@@ -30,6 +30,7 @@
 - (IBAction)triggerCheckBox:(NSButton *)sender {
     [self saveAllDataAtOnce];
     [self markDoneUndone:sender assocTextField:[[[[sender superview] superview] superview] viewWithTag:_TAG_FOR_TEXTFIELD]];
+    [self checkForCompletionofGoal:sender];
 }
 
 - (IBAction)textEvent:(NSTextField *)sender {
@@ -60,6 +61,24 @@
     NsDateTracker = [NSDate date];
     myDate = [self formatDateforDataObject:NsDateTracker];
     dateSpecObject = [[NSMutableDictionary alloc] init];
+}
+
+#pragma Controller:
+-(void)checkForCompletionofGoal:(NSButton *)checkMark {
+//    if (checkMark.state==1)
+//        [_successText setHidden:NO];
+//        _successText.stringValue = @"Hooray";
+//    [_successText animateWithDuration:1.0
+//                          delay:3.0  /* starts the animation after 3 seconds */
+//                        options:UIViewAnimationCurveEaseInOut
+//                     animations:^ {
+//                         myLabel1.alpha = 0.0;
+//                         myLabel2.alpha = 0.0;
+//                     }
+//                     completion:^(BOOL finished) {
+//                         [myLabel1 removeFromSuperview];
+//                         [myLabel2 removeFromSuperview];
+//                     }];
 }
 
 #pragma Controller: Set myDate to User Initiated Date

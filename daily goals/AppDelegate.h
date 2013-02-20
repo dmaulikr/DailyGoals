@@ -26,6 +26,7 @@
 - (IBAction)nextDate:(NSButton *)sender;
 - (IBAction)prevDate:(NSButton *)sender;
 - (IBAction)segCell:(NSSegmentedCell *)sender;
+@property (weak) IBOutlet NSTextField *successText;
 
 @property (weak) IBOutlet NSButton *check1;
 @property (weak) IBOutlet NSButton *check2;
