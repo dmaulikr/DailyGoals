@@ -23,8 +23,7 @@
 @property (strong) IBOutlet NSTextField *text3;
 @property (strong) IBOutlet NSTextField *text2;
 @property (strong) IBOutlet NSTextField *text1;
-- (IBAction)nextDate:(NSButton *)sender;
-- (IBAction)prevDate:(NSButton *)sender;
+
 - (IBAction)segCell:(NSSegmentedCell *)sender;
 @property (weak) IBOutlet NSTextField *successText;
 

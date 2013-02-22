@@ -30,7 +30,7 @@
 - (IBAction)triggerCheckBox:(NSButton *)sender {
     [self saveAllDataAtOnce];
     [self markDoneUndone:sender assocTextField:[[[[sender superview] superview] superview] viewWithTag:_TAG_FOR_TEXTFIELD]];
-    [self checkForCompletionofGoal:sender];
+//    [self checkForCompletionofGoal:sender];
 }
 
 - (IBAction)textEvent:(NSTextField *)sender {
@@ -135,6 +135,8 @@
     
     //Controller pass info to Model to store and retrieve data
     [self saveDatatoFile:myDictionary];
+    
+      NSLog(@"%@",myDictionary);
 }
 
 #pragma Controller: From Data Object To View Function to update UI)
@@ -164,32 +166,16 @@
     [self updateDataObjectwithNewInfo:_text3 boxNumber:@"text3" isChecked:[NSNumber numberWithBool:_check3.state]];
 }
 
-#pragma Controller: Next Date
-- (IBAction)nextDate:(NSButton *)sender {
-    [self saveAllDataAtOnce];
-    [self setDate:@"forward"];
-    [self updateUIdate];
-    [self updateUIwithSavedData];
-}
-
-#pragma Controller: Previous Date
-- (IBAction)prevDate:(NSButton *)sender {
-    [self saveAllDataAtOnce];
-    [self setDate:@"backward"];
-    [self updateUIdate];
-    [self updateUIwithSavedData];
-}
-
 - (IBAction)segCell:(NSSegmentedCell *)sender {
     [self saveAllDataAtOnce];
-
+    
     if (sender.selectedSegment == 2)
         [self setDate:@"forward"];
     else if (sender.selectedSegment == 1)
         [self setCurrentDate];
     else if (sender.selectedSegment == 0)
         [self setDate:@"backward"];
-    
+
     [self updateUIdate];
     [self updateUIwithSavedData];
 }
