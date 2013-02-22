@@ -135,8 +135,6 @@
     
     //Controller pass info to Model to store and retrieve data
     [self saveDatatoFile:myDictionary];
-    
-      NSLog(@"%@",myDictionary);
 }
 
 #pragma Controller: From Data Object To View Function to update UI)
