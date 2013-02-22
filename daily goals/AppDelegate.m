@@ -96,7 +96,7 @@
 #pragma Controller: Date Formater - UI Date
 -(NSString *)formatDateforUI:(NSDate *)unformattedNSDate {
     NSDateFormatter *format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"MMM dd, yyyy"];
+    [format setDateFormat:@"EEEE, MMM dd, yyyy"];
     NSString *dateStr = [format stringFromDate:unformattedNSDate];
     
     return dateStr;
