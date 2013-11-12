@@ -33,6 +33,7 @@
 		5FDA426716CD3632007DA0B8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5FDA426816CD3632007DA0B8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		5FDA426B16CD3633007DA0B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5FF7824616DD4C7D0060051C /* daily goals.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "daily goals.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +97,7 @@
 		5FDA425B16CD3632007DA0B8 /* daily goals */ = {
 			isa = PBXGroup;
 			children = (
+				5FF7824616DD4C7D0060051C /* daily goals.entitlements */,
 				5FDA426716CD3632007DA0B8 /* AppDelegate.h */,
 				5FDA426816CD3632007DA0B8 /* AppDelegate.m */,
 				5FDA426A16CD3633007DA0B8 /* MainMenu.xib */,
@@ -279,6 +281,7 @@
 		5FDA427016CD3633007DA0B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "daily goals/daily goals-Prefix.pch";
@@ -291,6 +294,7 @@
 		5FDA427116CD3633007DA0B8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "daily goals/daily goals-Prefix.pch";

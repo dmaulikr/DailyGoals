@@ -19,6 +19,7 @@
 
 - (IBAction)triggerCheckBox:(NSButton *)sender;
 - (IBAction)textEvent:(NSTextField *)sender;
+- (IBAction)buttonSaveEverything:(NSButton *)sender;
 
 @property (strong) IBOutlet NSTextField *text3;
 @property (strong) IBOutlet NSTextField *text2;
@@ -31,5 +32,6 @@
 @property (weak) IBOutlet NSButton *check2;
 @property (weak) IBOutlet NSButton *check3;
 @property (weak) IBOutlet NSTextField *extraBox;
+@property (unsafe_unretained) IBOutlet NSTextView *extraBoxTextView;
 @end
 

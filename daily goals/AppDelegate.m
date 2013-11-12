@@ -39,6 +39,17 @@
     [self updateDataObjectwithNewInfo:sender boxNumber:sender.identifier isChecked:check];
 }
 
+/* This needs to be expanded to save text boxes and check box state */
+- (IBAction)buttonSaveEverything:(NSButton *)sender {
+    
+    //Save Extra box Text
+    [myDictionary setValue:_extraBoxTextView.string forKey:@"extra"];
+    
+    [self saveDatatoFile:myDictionary];
+    
+    NSLog(@"This Dictionary: %@", myDictionary );
+}
+
 #pragma View: Mark Undone/Done Goal
 - (void)markDoneUndone:(NSButton *)checkMark assocTextField:(NSTextField *)textfield {  
     textfield.textColor = (checkMark.state == 1)? _Checked:_UnChecked;
@@ -123,18 +134,19 @@
 }
 
 #pragma Controller: Update Dictionary object with new goal information
+//Update Checkboxes and Checkbox Text
 - (void)updateDataObjectwithNewInfo:(NSTextField *)sender boxNumber:(NSString *)textFieldInc isChecked:(NSNumber *)checkedBool {
-  
+    
     textObject = [[NSMutableDictionary alloc] init];
 
     [textObject setValue:sender.stringValue forKey:@"value"];
     [textObject setValue:checkedBool forKey:@"isChecked"];
     [dateSpecObject setObject:textObject forKey:textFieldInc];
-    [myDictionary setValue:_extraBox.stringValue forKey:@"extra"];
     [myDictionary setObject:dateSpecObject forKey:myDate];
     
     //Controller pass info to Model to store and retrieve data
     [self saveDatatoFile:myDictionary];
+    
 }
 
 #pragma Controller: From Data Object To View Function to update UI)
@@ -159,6 +171,7 @@
 
 #pragma Controller: Save all Data
 -(void)saveAllDataAtOnce {
+    //Save Checkbox Status/ Save Checkbox Text
     [self updateDataObjectwithNewInfo:_text1 boxNumber:@"text1" isChecked:[NSNumber numberWithBool:_check1.state]];
     [self updateDataObjectwithNewInfo:_text2 boxNumber:@"text2" isChecked:[NSNumber numberWithBool:_check2.state]];
     [self updateDataObjectwithNewInfo:_text3 boxNumber:@"text3" isChecked:[NSNumber numberWithBool:_check3.state]];
